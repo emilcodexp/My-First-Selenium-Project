@@ -3,6 +3,7 @@ package TestNG_March.Maven_Project_5292024;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class LoginTest {
 
 	WebDriver driver;
-
+	Actions actions;
 	@BeforeMethod
 	public void loadWebpage() {
 
@@ -23,6 +24,14 @@ public class LoginTest {
 
 	}
 
+	@Test
+	public void doubleClick() {
+		driver.navigate().to("https://demoqa.com/buttons");
+		
+		actions.doubleClick();
+		
+		
+	}
 	@Test
 	public void validateLogin() {
 
@@ -40,7 +49,7 @@ public class LoginTest {
 
 	@Test
 	public void validateForgotPassword() {
-
+		
 		driver.findElement(By.cssSelector("input[type='password']+a")).click();
 
 		driver.findElement(By.xpath("//input[@type='text' and @placeholder='E-Mail Address']"))
